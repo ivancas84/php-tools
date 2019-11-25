@@ -1,29 +1,35 @@
 <?php
+/**
+ * Interpretacion de la api del sistema
+ */
+header("Access-Control-Allow-Origin: *"); //comentar esta linea en produccion
+header("Access-Control-Allow-Headers: *"); //comentar esta linea en produccion
+//header("Access-Control-Allow-Headers: X-Requested-With");
+header('Access-Control-Allow-Methods: POST'); //solo se permite POST
 
-header("Access-Control-Allow-Origin: *"); //dev
-header("Access-Control-Allow-Headers: *"); //dev
-//header('Access-Control-Allow-Methods: POST'); //prod
-
-//header('Content-Type: text/html; charset=utf-8'); //html
-header('Content-Type: application/json; charset=utf-8'); //json
-header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0"); //dev
-header("Cache-Control: post-check=0, pre-check=0", false); //dev
-header("Pragma: no-cache"); //dev
+//header('Content-Type: text/html; charset=utf-8'); //debug
+header('Content-Type: application/json; charset=utf-8');
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
 
 require_once("../config/config.php");
+require_once("function/strto.php");
 
-session_start(); 
-session_id(1); //dev
+session_start();
+session_id(1); //comentar en produccion
 
-//$param = explode('/', trim($_SERVER['REDIRECT_URL'], '/')); //dev
-$param = explode('/', trim($_SERVER['REQUEST_URI'])); //prod
+$param = explode('/', trim($_SERVER['REDIRECT_URL'], '/')); //en cliente
+//$param = explode('/', trim($_SERVER['REQUEST_URI'], '/')); //en produccion
 
-$options = array_slice($param, -2); //se define un array con la entidad y el script
+$index = array_search("api", $param);
 
-define("ENTITY", $options[0]);
+$options = array_slice($param, -2);
 
-$script = ((strpos($options[1], "?"))!== false) ? substr($options[1], 0, strpos($options[1], "?")) : $options[1];
+$entity = strto($options[0], "XxYy", "_");
+$api = $options[1];
+$className = $entity.strto($api, "XxYy", "_");
 
-$inc = require("api/" . $script . ".php");
-//if(!$inc) print_r($_REQUEST);
-
+require_once("class/api/{$api}/{$entity}.php");
+$c = new $className;
+$c->main();
