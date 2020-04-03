@@ -26,10 +26,14 @@ $index = array_search("api", $param);
 
 $options = array_slice($param, -2);
 
-$entity = strto($options[0], "XxYy", "_");
-$api = $options[1];
-$className = $entity.strto($api, "XxYy", "_");
+$entity = $options[0];
+$api = strto($options[1], "XxYy", "_");
 
-require_once("class/api/{$api}/{$entity}.php");
-$c = new $className;
-$c->main();
+//$entity = strto($options[0], "XxYy", "_");
+
+//$className = $entity.strto($api, "XxYy", "_")."Api";
+$apiName = $api."Api";
+require_once("class/api/{$api}.php");
+$a = new $apiName;
+$a->entityName = $entity;
+$a->main();
