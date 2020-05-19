@@ -6,12 +6,10 @@
 //session_set_cookie_params(7200, '/', 'localhost'); //testing
 //session_set_cookie_params(7200, '/', '.dominio.com.ar'); //testing
 
-
 /**
- * Identificacion
+ * Raiz
  */
-define("SYS_NAME", "System Name"); //nombre del modulo de administracion
-define("PATH_SYS", "path/to/structure"); //path correspondiente al módulo de administración
+define("PATH_ROOT" , "path/to/root");
 
 /**
  * Acceso a la base de datos
@@ -41,16 +39,9 @@ define("UNDEFINED", "~"); //valor no definido
 define("DEFAULT_VALUE", "^"); //valor por defecto
 
 /**
- * Raiz del modulo de administracion
- */
-define("PATH_HTTP" , "http://" . $_SERVER["SERVER_NAME"] . "/" . PATH_SYS . "/");
-define("PATH_ROOT" ,  $_SERVER["DOCUMENT_ROOT"] . "/" . PATH_SYS . "/");
-//define("PATH_LOGIN", "http://" . $_SERVER["SERVER_NAME"] . "/" . PATH_SYS . "/login/"); //path correspondiente al módulo de login
-
-/**
  * Rutas de inclusion
  */
 set_include_path(get_include_path()
-  . PATH_SEPARATOR . $_SERVER["DOCUMENT_ROOT"] . "/" . PATH_SYS . "/src"
-  . PATH_SEPARATOR . $_SERVER["DOCUMENT_ROOT"] . "/" . PATH_SYS . "/src/core"
+  . PATH_SEPARATOR . $_SERVER["DOCUMENT_ROOT"] . "/" . PATH_ROOT . "/src"
+  . PATH_SEPARATOR . $_SERVER["DOCUMENT_ROOT"] . "/" . PATH_ROOT . "/src/core"
 );
