@@ -1,0 +1,9 @@
+/src/config
+/api
+/cache
+/config
+/upload
+
+
+# IDE - VSCode
+.vscode/*
