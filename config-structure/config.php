@@ -10,6 +10,7 @@
  * Raiz
  */
 define("PATH_ROOT" , "path/to/root");
+define("PATH_UPLOAD", "upload");
 
 /**
  * Acceso a la base de datos

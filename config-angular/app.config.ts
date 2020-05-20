@@ -6,7 +6,7 @@ export const HTTP_OPTIONS = {
     })
 };
 
-export const UPLOAD_URL = 'http://localhost/upload/';
-export const API_URL = 'http://localhost/api/';
+export const UPLOAD_URL = 'upload/';
+export const API_URL = 'api/';
 
 
