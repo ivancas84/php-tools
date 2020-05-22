@@ -10,7 +10,8 @@
  * Raiz
  */
 define("PATH_ROOT" , "path/to/root");
-define("PATH_UPLOAD", "upload");
+define("PATH_CORE" , "path/to/core");
+define("PATH_UPLOAD", "path/to/upload");
 
 /**
  * Acceso a la base de datos
@@ -42,7 +43,8 @@ define("DEFAULT_VALUE", "^"); //valor por defecto
 /**
  * Rutas de inclusion
  */
-set_include_path(get_include_path()
-  . PATH_SEPARATOR . $_SERVER["DOCUMENT_ROOT"] . "/" . PATH_ROOT . "/src"
-  . PATH_SEPARATOR . $_SERVER["DOCUMENT_ROOT"] . "/" . PATH_ROOT . "/src/core"
+set_include_path(
+  $_SERVER["DOCUMENT_ROOT"] . "/" . PATH_ROOT
+  . PATH_SEPARATOR . $_SERVER["DOCUMENT_ROOT"] . "/" . PATH_CORE
+  . PATH_SEPARATOR . get_include_path()
 );

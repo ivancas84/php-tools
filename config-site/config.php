@@ -1,19 +1,10 @@
 <?php
 
-require_once("config/config.php");
-/**
- * Configuración de la estructura
- */
- 
-define("PATH_ROOT_SITE" , "path/to/root-site");
-/**
- * Raiz
- */
+require_once($_SERVER["DOCUMENT_ROOT"] . "/config/config.php");
+
+define("PATH_SITE", "path/to/site/src");
 
 set_include_path(
-  $_SERVER["DOCUMENT_ROOT"] . "/" . PATH_ROOT_SITE . "/"
+  $_SERVER["DOCUMENT_ROOT"] . "/" . PATH_SITE
   . PATH_SEPARATOR . get_include_path()
 );
-/**
- * Rutas de inclusion
- */
