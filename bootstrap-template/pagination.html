@@ -1,0 +1,36 @@
+
+<div *ngIf="collectionSize$ | async as collectionSize" class="clearfix">
+  <span *ngIf="display$ | async as display" class="float-left">
+    <ul class="pagination pagination-sm">
+      <li class="page-item">
+        <a href="" class="page-link" aria-label="Previous">
+          <span aria-hidden="true">«</span>
+        </a>
+      </li>
+      <li class="page-item">
+        <a href="" class="page-link"> 1 </a>
+      </li>
+      <li class="page-item">
+        <a href="" class="page-link"> 2 </a>
+      </li>
+      <li class="page-item active" aria-current="page">
+        <a href="" class="page-link"> 3 <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="page-item">
+        <a href="" class="page-link"> 4 </a>
+      </li>
+      <li class="page-item">
+        <a href="" class="page-link"> 5 </a>
+      </li>
+      <li class="page-item">
+        <a href="" class="page-link" aria-label="Next">
+          <span aria-hidden="true">»</span>
+        </a>
+      </li>
+    </ul>
+  </span>
+  <span class="float-left">
+    <div class="p-1 ml-1 border bg-light">4 registros</div>
+  </span>
+
+</div>  

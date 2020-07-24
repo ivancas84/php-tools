@@ -1,0 +1,54 @@
+<div class="card" >
+  <div class="card-header">Opciones</div>
+  <div class="card-body" [hidden]="!optCard">
+    <form novalidate>       
+      <fieldset>
+        <div class="form-row">
+          <div class="form-group col-sm-4">
+            <input class="form-control form-control-sm" placeholder="Persona" type="text">
+          </div>
+          <div class="form-group col-sm-4">
+            <select class="form-control form-control-sm">
+              <option>--Órgano--</option>
+                  <option>Ministerio Público</option>
+                  <option>Administración de Justicia</option>
+            </select>    
+          </div>
+          <div class="form-group col-sm-4">
+            <select class="form-control form-control-sm">
+              <option>--Departamento Judicial--</option>
+              <option>01 Corte</option>
+              <option>02 La Plata</option>
+            </select>    
+          </div>
+          
+        </div>
+      
+
+        <div class="form-row">
+          <div class="form-group col-sm-4">
+            <select class="form-control form-control-sm">
+              <option>--Motivo--</option>
+              <option>Alta</option>
+              <option>Baja</option>
+              <option>Pendiente</option>
+            </select>
+          </div>
+          <div class="form-group col-sm-4">
+            <select class="form-control form-control-sm">
+              <option>--Estado--</option>
+              <option>Creada</option>
+              <option>Enviada</option>
+              <option>Aprobada</option>
+              <option>Rechazada</option>
+            </select>
+          </div>
+          <div class="form-group col-sm-4">
+            <select class="form-control form-control-sm">
+              <option>--Modificada--</option>
+              <option>Sí</option>
+              <option selected="selected">No</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
