@@ -30,6 +30,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
+import { MaterialFileInputModule } from 'ngx-material-file-input';
+
 import { DataDefinitionService } from '@service/data-definition/data-definition.service';
 import { SessionStorageService } from '@service/storage/session-storage.service';
 import { ParserService } from '@service/parser/parser.service';
@@ -104,6 +106,8 @@ export const APP_DATE_FORMATS = {
     MatSortModule,
     MatTableModule,
     MatToolbarModule,
+
+    MaterialFileInputModule
   ],
   providers: [
     {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher},
