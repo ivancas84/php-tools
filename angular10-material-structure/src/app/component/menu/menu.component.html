@@ -6,15 +6,21 @@
     Ver
   </button>
   <mat-menu #ver="matMenu">
-    <a mat-menu-item routerLink="/algo-show" routerLinkActive="active" title="Ver Algo">Algo</a>
+    <a *ngIf="view.includes('interface1-show')" mat-menu-item routerLink="/interface1-show" [queryParams]="{'param1':value1, 'param2':value2, 'param3':3, 'param4':"4", 'param5':'true'}" routerLinkActive="active" title="Ver Interface">Interface con permiso</a>
+    <a mat-menu-item routerLink="/interface2-show" routerLinkActive="active" title="Ver Interface">Interface publica</a>
   </mat-menu>
 
   <button mat-button [matMenuTriggerFor]="nuevo" aria-label="icon-button with menu icon">
     Nuevo
   </button>
   <mat-menu #nuevo="matMenu">
-    <a mat-menu-item routerLink="/algo-admin" routerLinkActive="active" title="Nuevo Algo">Algo</a>
+    <a mat-menu-item routerLink="/interface3-admin" routerLinkActive="active" title="Nueva Interface 3">Interface 3</a>
   </mat-menu>
+
+  <a *ngIf="!authenticated" mat-menu-item routerLink="/login" routerLinkActive="active" title="Login"><strong>Login</strong></a>    
+
+  <a *ngIf="authenticated" mat-menu-item routerLink="/logout" routerLinkActive="active" title="Logout"><strong>Logout</strong></a>
+
 </mat-toolbar>
 
 

@@ -1,9 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-//import { AfiliacionAdminComponent } from '@component/afiliacion-admin/afiliacion-admin/afiliacion-admin.component';
+import { LoginComponent } from '@component/login/login.component';
+import { LogoutComponent } from '@component/logout/logout.component';
+import { HomeComponent } from '@component/home/home.component';
 
 const routes: Routes = [
-  //{ path: 'afiliacion-admin', component: AfiliacionAdminComponent, pathMatch: 'full' },
+  { path: 'login', component: LoginComponent, pathMatch: 'full' },
+  { path: 'logout', component: LogoutComponent, pathMatch: 'full' },
+  { path: 'login-success', redirectTo: '' },
+  { path: '',  component: HomeComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
