@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, SimpleChanges, Input, DoCheck } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, Input } from '@angular/core';
 import { AuthService } from '@service/auth/auth.service';
 
 @Component({
@@ -9,8 +9,6 @@ export class MenuComponent implements OnChanges {
 
   @Input() jwt?: string;
   authenticated = false;
-  logoutMenu = false;
-  loginMenu = true;
   view = [];
 
   constructor(
