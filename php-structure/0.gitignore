@@ -2,4 +2,9 @@
 /api
 /cache
 /upload
-/public
+/vendor
+/script
+
+
+# IDE - VSCode
+.vscode/*

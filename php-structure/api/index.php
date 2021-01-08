@@ -2,43 +2,50 @@
 /**
  * Interpretacion de la api del sistema
  */
-header("Access-Control-Allow-Origin: *"); //comentar esta linea en produccion
-header("Access-Control-Allow-Headers: *"); //comentar esta linea en produccion
-//header("Access-Control-Allow-Headers: X-Requested-With");
-header('Access-Control-Allow-Methods: POST'); //solo se permite POST
+    
+  // Allow from any origin
+  if (isset($_SERVER['HTTP_ORIGIN'])) {
+      // Decide if the origin in $_SERVER['HTTP_ORIGIN'] is one
+      // you want to allow, and if so:
+      header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
+      header('Access-Control-Allow-Credentials: true');
+      header('Access-Control-Max-Age: 86400');    // cache for 1 day
+  }
+  
+  // Access-Control headers are received during OPTIONS requests
+  if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+      
+      if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
+          // may also be using GET, OPTIONS, PUT, PATCH, HEAD etc
+          header("Access-Control-Allow-Methods: POST");         
+      
+      if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
+          header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
+  
+      exit(0); //finalizar el programa normalmente, sino se incluye no se porque dispara error
+  }
+  
 
-//header('Content-Type: text/html; charset=utf-8'); //debug
-header('Content-Type: application/json; charset=utf-8');
-header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-header("Cache-Control: post-check=0, pre-check=0", false);
-header("Pragma: no-cache");
-
-//$documentRoot = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT', FILTER_SANITIZE_STRING);
 require_once("../config/config.php");
 require_once("function/strto.php");
 require_once("class/Container.php");
 
-//session_start();
-//session_id(1); //comentar en produccion
-
-$param = explode('/', trim($_SERVER['REDIRECT_URL'], '/')); //en cliente
-//$param = explode('/', trim($_SERVER['REQUEST_URI'], '/')); //en produccion
-
+$param = explode('/', trim($_SERVER['REQUEST_URI'], '/'));
 $index = array_search("api", $param);
-
-$options = array_slice($param, -2);
-
-$entity = $options[0];
-$api = $options[1];
+$resource = array_slice($param, -2);
+$entity = $resource[0];
+$index = strpos($resource[1],"?");
+$action = ($index !== false) ? substr_replace($resource[1], '', $index) : $resource[1];
 
 try{
   $container = new Container();
-  $controller = $container->getApi($api, $entity);
+  $controller = $container->getApi($action, $entity);
   $data = $controller->main();
   echo json_encode($data);
 
 } catch (Exception $ex) {
   error_log($ex->getTraceAsString());
-  http_response_code(500);
+  $code = ($ex->getCode()) ? $ex->getCode() : 500;
+  http_response_code($code);
   echo $ex->getMessage();
 }

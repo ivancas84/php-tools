@@ -1,6 +1,6 @@
 <?php
 
-//ini_set("display_errors", 1);  //testing
+//ini_set("display_errors", 1);
 //ini_set('date.timezone', 'America/Argentina/Buenos_Aires');
 
 /**
@@ -9,10 +9,11 @@
  * Enlace URL . "/" .
  */
 define("PATH_ROOT" , "path-to-structure"); //raiz
-define("PATH_SRC" , "path-to-structure/src"); //codigo fuente
+define("PATH_SRC" , "path-to-structure" . DIRECTORY_SEPARATOR . "src"); //codigo fuente
 define("PATH_CORE" , "php-core"); //raiz del core
-define("PATH_UPLOAD" , "path-to-structure/upload"); //archivos subidos
-define("PATH_FILE" , "path-to-structure/file"); //archivos creados
+define("PATH_UPLOAD" , "path-to-structure" . DIRECTORY_SEPARATOR . "upload"); //archivos subidos
+define("PATH_FILE" , "path-to-structure" . DIRECTORY_SEPARATOR . "file"); //archivos creados
+define("PATH_CONFIG" , "path-to-structure/config" . DIRECTORY_SEPARATOR . "config");
 
 /**
  * Acceso a la base de datos
@@ -40,6 +41,15 @@ define("UNDEFINED", "~"); //indica que el valor no esta definido
 define("DEFAULT_VALUE", "^"); //indica que debe asignarse valor por defecto
 
 /**
+ * Correo
+ */
+define("EMAIL_USER", "email@gmail.com");
+define("EMAIL_PASSWORD", "clave");
+define("EMAIL_HOST", "smtp.gmail.com");
+define("EMAIL_FROM_ADRESS", "email@gmail.com");
+define("EMAIL_FROM_NAME", "Nombre del remitente");
+
+/**
  * JWT
  */
 define("JWT_KEY","your-256-bit-secret");
@@ -49,6 +59,6 @@ define("JWT_ALGORITHM", "HS256");
  * Rutas de inclusion
  */
 set_include_path(
-  $_SERVER["DOCUMENT_ROOT"] . "/" . PATH_SRC
-  . PATH_SEPARATOR . $_SERVER["DOCUMENT_ROOT"] . "/" . PHP_CORE
+  $_SERVER["DOCUMENT_ROOT"] . DIRECTORY_SEPARATOR . PATH_SRC
+  . PATH_SEPARATOR . $_SERVER["DOCUMENT_ROOT"] . DIRECTORY_SEPARATOR . PHP_CORE
 );

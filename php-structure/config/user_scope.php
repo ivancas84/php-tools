@@ -6,12 +6,9 @@ function user_scope() {
    * return [
    *   "user1" => [
    *     "password"=>"password", 
-   *     "scope"=>[
-   *       "read" => ["entity1", "entity2", "..."],
-   *       "write" => ["entity1", "entity2", "..."]
-   *      ]
+   *     "scope"=>["entity.rwx"],
+   *     "view"=>["someview"]
    *   ],
-   *   "user2" => ["..."]
    * ]
    */
   return [];
