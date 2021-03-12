@@ -17,8 +17,8 @@
 
     DialogAlertComponent,
     DialogConfirmComponent,
+    FieldViewAuxComponent,
     FieldViewComponent,
-    FieldValueComponent,
     InputAutocompleteComponent,
     //InputCheckboxComponent,
     InputDateComponent,
