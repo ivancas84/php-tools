@@ -13,32 +13,21 @@ define("PATH_SRC" , "path-to-structure" . DIRECTORY_SEPARATOR . "src"); //codigo
 define("PATH_CORE" , "php-core"); //raiz del core
 define("PATH_UPLOAD" , "path-to-structure" . DIRECTORY_SEPARATOR . "upload"); //archivos subidos
 define("PATH_FILE" , "path-to-structure" . DIRECTORY_SEPARATOR . "file"); //archivos creados
-define("PATH_CONFIG" , "path-to-structure/config" . DIRECTORY_SEPARATOR . "config");
+define("PATH_CONFIG" , "path-to-structure" . DIRECTORY_SEPARATOR . "config" . DIRECTORY_SEPARATOR . "config");
 
 /**
  * Acceso a la base de datos
  */
-define("DATA_DBNAME", "dbname");
+define("DATA_DBNAME", "db");
 define("DATA_USER", "root");
 define("DATA_PASS", "");
 define("DATA_HOST", "localhost");
 define("DATA_SCHEMA", "");
 
 /**
- * Acceso a la base de datos de transacciones
- */
-define("TXN_DBNAME", "sistema");
-define("TXN_USER", "root");
-define("TXN_PASS", "");
-define("TXN_HOST", "localhost");
-define("TXN_SCHEMA", "");
-
-/**
  * Valores especiales
  */
 define("DISABLE_ENTITIES", ""); //entidades de la base de datos que seran deshabilitadas
-define("UNDEFINED", "~"); //indica que el valor no esta definido
-define("DEFAULT_VALUE", "^"); //indica que debe asignarse valor por defecto
 
 /**
  * Correo
